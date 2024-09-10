@@ -96,12 +96,6 @@ let questionarioAtual = 0;
 let perguntaAtual = 0;
 let respostas = [];
 
-function iniciarQuestionario() {
-    // Esconde a página inicial e mostra o container do questionário
-    document.getElementById("pagina-inicial").style.display = "none";
-    document.getElementById("questionario-container").style.display = "block";
-    mostrarPergunta();
-}
 
 function mostrarPergunta() {
     const questionario = questionarios[questionarioAtual];
