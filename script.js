@@ -1,3 +1,8 @@
+let questionarioAtual = 0;
+let perguntaAtual = 0;
+let respostas = [];
+
+
 const questionarios = [
     { 
         perguntas: [
@@ -91,13 +96,21 @@ const questionarios = [
         imagemResultado: "img/resultado_3.png" 
     }
 ];
-
-let questionarioAtual = 0;
-let perguntaAtual = 0;
-let respostas = [];
-
-
+function iniciarQuestionario() {
+    document.getElementById("pagina-inicial").style.display = "none";
+    document.getElementById("questionario-container").style.display = "block";
+    mostrarPergunta();
+}
 function mostrarPergunta() {
+    const pergunta = questionarios[questionarioAtual].perguntas[perguntaAtual];
+    document.getElementById("pergunta").innerText = pergunta;
+    document.getElementById("questionario-form").reset(); // Limpa os botões de rádio
+
+   
+    document.getElementById("imagem-questionario").src = questionarios[questionarioAtual].imagem;
+}
+function mostrarPergunta() {
+    
     const questionario = questionarios[questionarioAtual];
    
     document.getElementById("imagem-questionario").src = questionario.imagem;
@@ -111,36 +124,55 @@ function mostrarPergunta() {
     }
 }
 
+
 function proximaPergunta() {
-    const resposta = parseInt(document.getElementById("resposta").value);
-    if (isNaN(resposta) || resposta < 0 || resposta > 5) {
-        alert("Por favor, insira uma resposta válida entre 0 e 5.");
+    const radios = document.querySelectorAll('input[name="resposta"]');
+    let respostaSelecionada = null;
+
+    // Obtém a resposta selecionada
+    radios.forEach((radio) => {
+        if (radio.checked) {
+            respostaSelecionada = parseInt(radio.value);
+        }
+    });
+
+    if (respostaSelecionada === null) {
+        alert("Por favor, selecione uma resposta.");
         return;
     }
-    respostas.push(resposta);
-    perguntaAtual++;
-    mostrarPergunta();
-    document.getElementById("resposta").value = "";
+
+    respostas.push(respostaSelecionada);
+
+    if (perguntaAtual < questionarios[questionarioAtual].perguntas.length - 1) {
+        perguntaAtual++;
+        mostrarPergunta();
+    } else {
+        finalizarQuestionario();
+    }
 }
+
 
 function finalizarQuestionario() {
     const soma = respostas.reduce((a, b) => a + b, 0);
-    document.getElementById("soma-respostas").innerText = `Soma das respostas: ${soma}`;
+    document.getElementById("soma-respostas").innerText = `Soma de pontos das respostas: ${soma}. Verifique abaixo seu resultado:`;
     document.getElementById("imagem-resultado").src = questionarios[questionarioAtual].imagemResultado;
     document.getElementById("questionario-container").style.display = "none";
     document.getElementById("resultado").style.display = "block";
 
-    // Esconder o botão 'próximo-questionario' independentemente
-    document.getElementById("proximo-questionario").style.display = "none"; 
-
-    // Se não for o último questionário, mostrar o botão 'Próximo Questionário'
-    if (questionarioAtual < questionarios.length - 1) {
-        document.getElementById("proximo-questionario").style.display = "block";
-    } else {
-        // Se for o último questionário, mostrar apenas o botão 'Fechar'
+    // Se for o último questionário, mostrar apenas o botão fechar
+    if (questionarioAtual === questionarios.length - 1) {
+        document.getElementById("proximo-questionario").style.display = "none";
         document.getElementById("fechar").style.display = "block";
+    } else {
+        // Se não for o último, mostrar o botão próximo
+        document.getElementById("proximo-questionario").style.display = "block";
+        document.getElementById("fechar").style.display = "none";
     }
 }
+
+
+
+
 
 function proximoQuestionario() {
     questionarioAtual++;
