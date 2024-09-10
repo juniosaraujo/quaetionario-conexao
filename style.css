@@ -89,6 +89,8 @@ input[type="number"] {
         width: 100%;
         padding: 15px;
         display: block;
+        font-size: 14px;
+        font-weight: 700;
     }
 
     input[type="number"] {
