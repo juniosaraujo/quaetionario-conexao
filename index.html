@@ -1,23 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questionários</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-          
+
+
+     <!-- Página de boas-vindas -->
+     <div id="pagina-inicial" class="container">
+        <img id="imagem-logo" src="img/logo_questionario.png" alt="Imagem Página Inicial">
+        <h2>Bem-vindo(a), </h2>
+
+        <p>
+            Você foi convidado a responder três testes que avaliam seu comportamento no ambiente profissional: 
+            Teste de Conexão com seu Chefe -Teste como você mostra o seu Trabalho - Teste de Travas.
+        </p>
+        <p>Reserve um tempo para responder com atenção e sinceridade. Ao final de cada questionário, você verá uma avaliação do seu desempenho atual.</p>
+        <p>
+            Clique no botão abaixo para começar!
+        </p>
+        <button onclick="iniciarQuestionario()">Iniciar</button>
+    </div>
+      
+  
     <div id="questionario-container">
         <h2 id="titulo-questionario"></h2>
         <img id="imagem-questionario" src="" alt="Imagem do Questionário">
         <p id="pergunta"></p>
-        <input type="number" id="resposta" min="0" max="5">
+
+        <div id="opcoes">
+            <label>
+                <input type="radio" name="resposta" value="0" required> 0
+            </label>
+            <label>
+                <input type="radio" name="resposta" value="1"> 1
+            </label>
+            <label>
+                <input type="radio" name="resposta" value="2"> 2
+            </label>
+            <label>
+                <input type="radio" name="resposta" value="3"> 3
+            </label>
+            <label>
+                <input type="radio" name="resposta" value="4"> 4
+            </label>
+            <label>
+                <input type="radio" name="resposta" value="5"> 5
+            </label>
+        </div>
+        
         <button id="proxima-pergunta" onclick="proximaPergunta()">Próxima Pergunta</button>
         <button id="finalizar-questionario" onclick="finalizarQuestionario()" style="display:none;">Ver Resultado</button>
     </div>
+  
+
     <div id="resultado" style="display:none;">
-        <h2>Resultado</h2>
+        <h2>Resultado:</h2>
         <p id="soma-respostas"></p>
         <img id="imagem-resultado" src="" alt="Imagem do Resultado">
         <button id="proximo-questionario" onclick="proximoQuestionario()" style="display:none;">Próximo Questionário</button>
