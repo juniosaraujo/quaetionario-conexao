@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionários</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="questionario-container">
+        <h2 id="titulo-questionario"></h2>
+        <img id="imagem-questionario" src="" alt="Imagem do Questionário">
+        <p id="pergunta"></p>
+        <input type="number" id="resposta" min="0" max="5">
+        <button id="proxima-pergunta" onclick="proximaPergunta()">Próxima Pergunta</button>
+        <button id="finalizar-questionario" onclick="finalizarQuestionario()" style="display:none;">Ver Resultado</button>
+    </div>
+    <div id="resultado" style="display:none;">
+        <h2>Resultado</h2>
+        <p id="soma-respostas"></p>
+        <img id="imagem-resultado" src="" alt="Imagem do Resultado">
+        <button id="proximo-questionario" onclick="proximoQuestionario()" style="display:none;">Próximo Questionário</button>
+        <button id="fechar" onclick="fechar()" style="display:none;">Fechar</button>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
