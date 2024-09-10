@@ -21,6 +21,7 @@ body {
     max-width: 600px;
     margin: 50px auto; 
     background-color: #fff;
+    background-color: #E6E6FA;;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -30,6 +31,7 @@ body {
 #questionario-container, #resultado {
     display: none; /* O questionário está oculto inicialmente */
     background-color: #fff;
+    background-color: #E6E6FA;;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
