@@ -184,7 +184,16 @@ function proximoQuestionario() {
 }
 
 function fechar() {
+    // Tentar fechar a página
     window.close();
+
+    // Verifica se a página foi realmente fechada, se não, redirecionar
+    setTimeout(function() {
+        if (!window.closed) {
+            alert("Por favor, feche a aba ou o aplicativo manualmente.");
+            window.location.href = "https://www.seusite.com/agradecimento"; // Redirecionar para uma página de agradecimento
+        }
+    }, 1000); // Esperar 1 segundo para ver se a página foi fechada
 }
 
 mostrarPergunta();
